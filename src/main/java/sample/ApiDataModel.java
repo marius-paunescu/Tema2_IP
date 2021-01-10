@@ -8,7 +8,7 @@ public class ApiDataModel{
     public String name;
     public int cod;
     public CoordsModel coords;
-    public List<WeatherModel> weather;
+    public WeatherModel weather;
     public MainWeatherModel mainWeather;
     public double windSpeed;
     public String countryCode;
