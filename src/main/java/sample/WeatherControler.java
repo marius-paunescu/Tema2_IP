@@ -3,8 +3,12 @@ package sample;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 
+import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -17,22 +21,63 @@ public class WeatherControler {
     // 1f36b08243530e8fef8d1aeff4520b86
     private String apiKey;
 
+    @FXML
+    private Label tempLabel = new Label();
+    @FXML
+    private Label humLabel = new Label();
+    @FXML
+    private Label windLabel = new Label();
+    @FXML
+    private ChoiceBox<String> countryDropDown = new ChoiceBox<String>();
+    @FXML
+    private ChoiceBox<String> cityDropDown = new ChoiceBox<String>();
+
     public WeatherControler(String inputFileName, String apiKey) throws IOException {
         this.inputFileName = inputFileName;
         this.apiKey = apiKey;
-        Initialize();
+        initialize();
+    }
+
+    public WeatherControler() throws IOException {
+        this.inputFileName = "input.txt";
+        this.apiKey = "1f36b08243530e8fef8d1aeff4520b86";
+        initialize();
     }
 
     @FXML
-    public void Initialize() throws IOException {
+    private void initialize() throws IOException {
         //TODO: citire fisier, initalizare dropdown-uri orase si tari
+        ArrayList<String> countries = new ArrayList<String>();
+        ArrayList<String> cities = new ArrayList<String>();
+
+        countries.add("RO");
+        countries.add("RU");
+        countries.add("FR");
+        cities.add("Bucharest");
+        cities.add("Moscow");
+        cities.add("Tarascon");
+
+        countryDropDown.setItems(FXCollections.observableList(countries));
+        cityDropDown.setItems(FXCollections.observableList(cities));
+
+        countryDropDown.getSelectionModel().selectFirst();
+        cityDropDown.getSelectionModel().selectFirst();
+
         UpdateWeatherData();
     }
 
     private void UpdateWeatherData() throws IOException {
         String cityName = "Bucharest";
+        cityName = cityDropDown.getSelectionModel().getSelectedItem();
         String countryCode = "RO";
+        countryCode = countryDropDown.getSelectionModel().getSelectedItem();
         ApiDataModel apiDataModel = GetWeatherData(cityName, countryCode);
+
+        tempLabel.setText("Temperature: " + String.valueOf(apiDataModel.mainWeather.temp));
+        humLabel.setText("Humidity: " + String.valueOf(apiDataModel.mainWeather.humidity));
+        windLabel.setText("Wind: " + String.valueOf(apiDataModel.windSpeed));
+
+
     }
 
     private ApiDataModel GetWeatherData(String cityName, String countryCode) throws IOException {
@@ -68,6 +113,11 @@ public class WeatherControler {
         apiData.countryCode = jsonObject.get("sys").getAsJsonObject().get("country").getAsString();
 
         return apiData;
+    }
+
+    @FXML
+    private void handleMouseClick() throws IOException {
+        UpdateWeatherData();
     }
 
 }

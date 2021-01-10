@@ -18,7 +18,8 @@ public class Main extends Application {
 
         try {
             loader.setLocation(this.getClass().getResource("/WeatherView.fxml"));
-            loader.setController(new WeatherControler("input.txt", "1f36b08243530e8fef8d1aeff4520b86"));
+            //loader.setController(new WeatherControler("input.txt", "1f36b08243530e8fef8d1aeff4520b86"));
+            loader.setController(new WeatherControler());
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             primaryStage.setScene(scene);
