@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -16,7 +17,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <ChoiceBox fx:id="countryDropDown" layoutX="11.0" layoutY="33.0" prefWidth="150.0" />
+                              <ChoiceBox fx:id="countryDropDown" layoutX="11.0" layoutY="33.0" onMouseReleased="#handleSelected" prefWidth="150.0" />
                               <ChoiceBox fx:id="cityDropDown" layoutX="11.0" layoutY="126.0" prefWidth="150.0" />
                            </children>
                         </AnchorPane>
@@ -31,9 +32,33 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="tempLabel" layoutX="133.0" layoutY="181.0" prefHeight="18.0" prefWidth="150.0" text="Temperature:" />
-                  <Label fx:id="humLabel" layoutX="133.0" layoutY="222.0" prefHeight="18.0" prefWidth="150.0" text="Humidity: " />
-                  <Label fx:id="windLabel" layoutX="133.0" layoutY="263.0" prefHeight="18.0" prefWidth="150.0" text="Wind: " />
+                  <Label fx:id="tempLabel" graphicTextGap="6.0" layoutX="202.0" layoutY="246.0" prefHeight="23.0" prefWidth="200.0" text="Temperature:">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="humLabel" layoutX="202.0" layoutY="294.0" prefHeight="18.0" prefWidth="200.0" text="Humidity: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="windLabel" layoutX="202.0" layoutY="346.0" prefHeight="18.0" prefWidth="200.0" text="Wind: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="cityLabel" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="200.0" text="City: ">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="timeLabel" layoutX="14.0" layoutY="59.0" prefHeight="28.0" prefWidth="200.0" text="Time: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="descriptionLabel" layoutX="14.0" layoutY="87.0" prefHeight="28.0" prefWidth="180.0" text="Description: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </items>
