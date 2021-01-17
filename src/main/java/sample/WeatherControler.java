@@ -8,9 +8,12 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 import java.io.*;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -39,6 +42,8 @@ public class WeatherControler {
     private ChoiceBox<String> countryDropDown = new ChoiceBox<String>();
     @FXML
     private ChoiceBox<String> cityDropDown = new ChoiceBox<String>();
+    @FXML
+    private ImageView imgView = new ImageView();
 
     public WeatherControler(String inputFileName, String apiKey) throws IOException {
         this.inputFileName = inputFileName;
@@ -102,7 +107,8 @@ public class WeatherControler {
         cityLabel.setText(String.valueOf(cityName));
         timeLabel.setText(String.valueOf(formattedDate));
         descriptionLabel.setText(String.valueOf(apiDataModel.weather.description));
-
+        Image image = new Image(apiDataModel.weather.icon);
+        imgView.setImage(image);
     }
 
     private ApiDataModel GetWeatherData(String cityName, String countryCode) throws IOException {

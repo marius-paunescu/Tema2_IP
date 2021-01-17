@@ -20,7 +20,7 @@ public class WeatherJsonParser {
         weatherModel.id = jsonObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("id").getAsInt();
         weatherModel.description = jsonObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
         weatherModel.main = jsonObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("main").getAsString();
-        weatherModel.icon = jsonObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("icon").getAsString();
+        weatherModel.icon = "https://openweathermap.org/img/w/" + jsonObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("icon").getAsString() + ".png";
         apiData.weather = weatherModel;
 
         apiData.mainWeather = new MainWeatherModel();

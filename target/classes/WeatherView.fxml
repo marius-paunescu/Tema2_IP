@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -59,6 +60,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="imgView" fitHeight="120.0" fitWidth="120.0" layoutX="242.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
         </items>
